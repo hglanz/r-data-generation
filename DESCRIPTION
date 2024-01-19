@@ -1,0 +1,9 @@
+Package: GreetingRPackage
+Type: Package
+Title: Greeting World
+Version: 0.1
+Date: 2024-01-18
+Author: Aditi Gajjar
+Maintainer: The package maintainer <agajjar@calpoly.edu>
+Description: Comprised of single function that prints a greeting statement
+
