@@ -1,0 +1,14 @@
+Resources:
+
+
+Making an R package - 
+https://ourcodingclub.github.io/tutorials/writing-r-package/
+
+Understanding parameters of make_classification - 
+https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html
+https://www.educative.io/answers/how-to-create-data-for-n-class-problems-using-scikit-learn
+
+Understanding parameters of make_regression - 
+https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html
+https://www.educative.io/answers/how-to-generate-datasets-for-regression-problems
+
