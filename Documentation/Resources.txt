@@ -3,6 +3,7 @@ Resources:
 
 Making an R package - 
 https://ourcodingclub.github.io/tutorials/writing-r-package/
+https://r-pkgs.org/
 
 Understanding parameters of make_classification - 
 https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_classification.html
@@ -12,3 +13,12 @@ Understanding parameters of make_regression -
 https://scikit-learn.org/stable/modules/generated/sklearn.datasets.make_regression.html
 https://www.educative.io/answers/how-to-generate-datasets-for-regression-problems
 
+Understanding SVD - 
+https://math.mit.edu/classes/18.095/2016IAP/lec2/SVD_Notes.pdf
+
+
+
+
+Ideas to expand on:
+Clustering: For unsupervised learning through clustering algorithms like K-means, hierarchical clustering, DBSCAN
+Generalized Linear Models (GLMs): For GLMs, including logistic regression, Poisson regression, and their applications in various fields.
