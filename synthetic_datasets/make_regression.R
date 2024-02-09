@@ -98,7 +98,7 @@ make_regression(n_features=200, n_informative=50, plot=TRUE)
 # Test Case 4: Multi-Output Regression
 make_regression(n_targets=2, plot=TRUE)
 
-# Test Case 5: Adding Bias and Noise
+# Test Case 5: Adding Bias and 
 make_regression(bias=10, noise=5, plot=TRUE)
 
 # Test Case 6: Effective rank and tail strength
