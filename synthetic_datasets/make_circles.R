@@ -37,4 +37,4 @@ make_circles <- function(n_samples = 100, shuffle = TRUE, noise = NULL, random_s
 }
 
 
-result <- make_circles(plot = TRUE, shuffle = TRUE, noise = 0.05)
+result <- make_circles(plot = TRUE, shuffle = FALSE, factor = 0.5, noise = 0.2)

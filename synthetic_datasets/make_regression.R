@@ -70,11 +70,11 @@ make_regression <- function(n_samples=100, n_features=100, n_informative=10, n_t
   
   if (plot) {
     if (n_targets == 1) {
-      plot(X[,1], Y, main="Feature 1 vs Target", xlab="Feature 1", ylab="Target")
+      plot(X[,1], Y, xlab="Feature 1", ylab="Target", pch = 19)
     } else {
       par(mfrow=c(1, n_targets))
       for (i in 1:n_targets) {
-        plot(X[,1], Y[,i], main=paste("Feature 1 vs Target", i), xlab="Feature 1", ylab=paste("Target", i))
+        plot(X[,1], Y[,i], xlab="Feature 1", ylab=paste("Target", i), pch = 19)
       }
     }
   }
