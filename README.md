@@ -7,5 +7,10 @@ Resources:
 * https://scikit-learn.org/stable/datasets/sample_generators.html
 
 Goals:
-* Reproduce make_classification() and make_regression() from sklearn in R
-* TBD
+* make_classification() from sklearn
+* make_regression() from sklearn
+* simulated data for ANOVA (this could be a wrapper or something for make_regression)
+* "make_clustering" to simulate data for clustering
+* generic single quantitative variable with specified shape, center, spread
+* generic single categorical variable with specified number of levels and "shape" (?)
+  
