@@ -9,6 +9,7 @@ Resources:
 Goals:
 * make_classification() from sklearn
 * make_regression() from sklearn
+* datasets from here: https://mschroth.shinyapps.io/classificationapp/
 * simulated data for ANOVA (this could be a wrapper or something for make_regression)
 * "make_clustering" to simulate data for clustering
 * generic single quantitative variable with specified shape, center, spread
