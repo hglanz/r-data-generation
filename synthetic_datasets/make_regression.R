@@ -84,74 +84,74 @@ make_regression <- function(n_samples=100, n_features=100, n_informative=10, n_t
 }
 
 
-# Testing
-
-# Test Case 1: Default Parameters
-make_regression(plot=TRUE)
-
-# Test Case 2: Increased Sample Size
-make_regression(n_samples=1000, plot=TRUE)
-
-# Test Case 3: More Features
-make_regression(n_features=200, n_informative=50, plot=TRUE)
-
-# Test Case 4: Multi-Output Regression
-make_regression(n_targets=2, plot=TRUE)
-
-# Test Case 5: Adding Bias and 
-make_regression(bias=10, noise=5, plot=TRUE)
-
-# Test Case 6: Effective rank and tail strength
-make_regression(n_features=50, effective_rank=10, tail_strength=0.2, plot=TRUE)
-
-# Test Case 7: No shuffling
-make_regression(shuffle=FALSE, plot=TRUE)
-
-# Test Case 8: Checking to see if it's returning coefficients
-make_regression(coef=TRUE, plot=TRUE)
-
-# Test Case 9: Specifying Random State
-make_regression(random_state=42, plot=TRUE)
-
-# Test Case 10: High Noise Level
-make_regression(noise=20, plot=TRUE)
-
-library(car)
-
-# Test Case 11: High effective rank with moderate tail strength
-library(car)
-
-data <- make_regression(n_samples=100, n_features=20, effective_rank=20, tail_strength=0.5)
-
-df <- as.data.frame(data$X)
-df$Y <- data$Y
-
-model <- lm(Y ~ ., data=df)
-
-vif_result <- vif(model)
-print(vif_result)
-
-# Expectation: low multicollinearity among features
-
-
-
-
-
-
-
-
-
-# Double check:
-# Test Case 12: Low effective rank with moderate tail strength
-data <- make_regression(n_samples=100, n_features=20, effective_rank=50, tail_strength=0.5)
-# Expectation: high multicollinearity
-
-df <- as.data.frame(data$X)
-df$Y <- data$Y
-
-model <- lm(Y ~ ., data=df)
-
-# getting alias errors
+# # Testing
+# 
+# # Test Case 1: Default Parameters
+# make_regression(plot=TRUE)
+# 
+# # Test Case 2: Increased Sample Size
+# make_regression(n_samples=1000, plot=TRUE)
+# 
+# # Test Case 3: More Features
+# make_regression(n_features=200, n_informative=50, plot=TRUE)
+# 
+# # Test Case 4: Multi-Output Regression
+# make_regression(n_targets=2, plot=TRUE)
+# 
+# # Test Case 5: Adding Bias and 
+# make_regression(bias=10, noise=5, plot=TRUE)
+# 
+# # Test Case 6: Effective rank and tail strength
+# make_regression(n_features=50, effective_rank=10, tail_strength=0.2, plot=TRUE)
+# 
+# # Test Case 7: No shuffling
+# make_regression(shuffle=FALSE, plot=TRUE)
+# 
+# # Test Case 8: Checking to see if it's returning coefficients
+# make_regression(coef=TRUE, plot=TRUE)
+# 
+# # Test Case 9: Specifying Random State
+# make_regression(random_state=42, plot=TRUE)
+# 
+# # Test Case 10: High Noise Level
+# make_regression(noise=20, plot=TRUE)
+# 
+# library(car)
+# 
+# # Test Case 11: High effective rank with moderate tail strength
+# library(car)
+# 
+# data <- make_regression(n_samples=100, n_features=20, effective_rank=20, tail_strength=0.5)
+# 
+# df <- as.data.frame(data$X)
+# df$Y <- data$Y
+# 
+# model <- lm(Y ~ ., data=df)
+# 
+# vif_result <- vif(model)
+# print(vif_result)
+# 
+# # Expectation: low multicollinearity among features
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# # Double check:
+# # Test Case 12: Low effective rank with moderate tail strength
+# data <- make_regression(n_samples=100, n_features=20, effective_rank=50, tail_strength=0.5)
+# # Expectation: high multicollinearity
+# 
+# df <- as.data.frame(data$X)
+# df$Y <- data$Y
+# 
+# model <- lm(Y ~ ., data=df)
+# 
+# # getting alias errors
 
 
 

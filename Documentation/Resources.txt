@@ -17,6 +17,13 @@ Understanding SVD -
 https://math.mit.edu/classes/18.095/2016IAP/lec2/SVD_Notes.pdf
 
 
+Spirals math:
+https://sites.math.washington.edu/~ebekyel/Math126/Spiral.html
+
+
+Interesting article I was reading:
+https://www.mdpi.com/2227-7390/10/15/2733
+
 
 
 Ideas to expand on:
