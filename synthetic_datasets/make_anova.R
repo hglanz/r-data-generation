@@ -15,7 +15,9 @@ simulate_anova_data <- function(n_groups = 3, n_samples_per_group = 100, n_featu
                           bias = bias, noise = noise, shuffle = FALSE, coef = coef, random_state = random_state,
                           effective_rank = effective_rank, tail_strength = tail_strength, plot = FALSE)
   
-  # add grouping labels and effects (TBD)
+  group_labels <- rep(1:n_groups, each = n_samples_per_group)
+  group_effects <- rep(1:n_groups, each = n_samples_per_group) * group_effect
+  Y_adjusted <- data$Y + group_effects
   
   if (shuffle) {
     indices <- sample(total_samples)
@@ -30,9 +32,10 @@ simulate_anova_data <- function(n_groups = 3, n_samples_per_group = 100, n_featu
 
 simulate_anova_data()
 
+simulate_anova_data(n_groups = 5, n_samples_per_group = 50)
 
+simulate_anova_data(noise = 20, bias = 10, random_state = 123)
 
-
-
+simulate_anova_data(effective_rank = 20, tail_strength = 0.2)
 
 
