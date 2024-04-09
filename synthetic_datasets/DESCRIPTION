@@ -1,0 +1,9 @@
+Package: SyntheticDatasets
+Type: Package
+Title: Synthetic Dataset Creation for ML Modeling
+Version: 0.1
+Date: 2024-04-05
+Author: Aditi Gajjar
+Maintainer: The package maintainer <agajjar@calpoly.edu>
+Description: Eight synthetic datasets for Testing and Validation of Machine Learning Models. 
+

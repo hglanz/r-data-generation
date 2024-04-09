@@ -1,0 +1,32 @@
+---
+title: "Introduction to syntheticDatasets"
+author: "Aditi Gajjar"
+date: "`r Sys.Date()`"
+format: html
+vignette: >
+  %\VignetteIndexEntry{Vignette's Title}
+  %\VignetteEngine{quarto::html}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+
+The **`syntheticDatasets`** package provides a suite of functions designed to generate synthetic datasets for various applications, including but not limited to machine learning algorithm testing, statistical analysis, and educational purposes. This vignette demonstrates the use of **`syntheticDatasets`** to create datasets that model blobs, circles, spirals, classification challenges, regression, ANOVA tests, and more.
+
+# Getting Started
+
+First, ensure that you have **`syntheticDatasets`** installed and loaded into your R session.
+
+```{r setup}
+# install.packages("syntheticDatasets")
+
+# Load the package
+library(syntheticDatasets)
+```

@@ -1,0 +1,10 @@
+
+export(make_four_square)
+export(make_anova)
+export(make_blobs)
+export(make_circles)
+export(make_classification)
+export(make_moons)
+export(make_regression)
+export(make_spiral)
+
