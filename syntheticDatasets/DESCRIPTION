@@ -12,11 +12,11 @@ Depends:
     R (>= 3.5.0)
 Suggests:
     testthat (>= 3.0.0)
+    quarto
 Imports:
     ggplot2,
     dplyr,
-    scatterplot3d
-Suggests:
-  quarto
+    scatterplot3d,
+    here
 VignetteBuilder: 
     quarto

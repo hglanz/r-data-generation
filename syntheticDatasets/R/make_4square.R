@@ -55,8 +55,8 @@ make_four_square_dataset <- function(n_samples=100, noise=0.0, shuffle=TRUE, ran
   }
 
   if (plot) {
-    colors <- c("red", "blue")
-    plot(features, col=colors[target], pch=19, xlab="Feature 1", ylab="Feature 2")
+    colors <- c("red", "cyan")
+    plot(features, col=colors[target], pch=19, xlab="Feature 1", ylab="Feature 2", main = "Generated 4-Square Dataset")
     legend("topright", legend=c("Class 1", "Class 2"), fill=colors)
   }
 

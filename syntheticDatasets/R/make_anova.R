@@ -1,4 +1,7 @@
-source("/Users/aditigajjar/Desktop/Thesis/r-data-generation/syntheticDatasets/R/make_regression.R")
+library(here)
+library(scatterplot3d)
+source(here("R", "make_regression.R"))
+
 #' Simulate Data for ANOVA Analysis
 #'
 #' This function generates synthetic data suitable for ANOVA (Analysis of Variance) testing. It creates a dataset with a specified number of groups, samples per group, and features, adding an optional group effect to simulate between-group differences. The function leverages `make_regression` to generate the feature data (`X`) and then adjusts the response (`Y`) to include group effects.
@@ -14,7 +17,7 @@ source("/Users/aditigajjar/Desktop/Thesis/r-data-generation/syntheticDatasets/R/
 #' @param random_state Integer, the seed used by the random number generator for reproducibility. Can be NULL. Default is NULL.
 #' @param effective_rank The approximate number of singular vectors required to explain most of the input data by linear combinations. Relevant for 'make_regression'. Default is NULL.
 #' @param tail_strength The relative importance of the fat noisy tail of the singular values profile if 'effective_rank' is not NULL. Default is 0.5.
-#' @param group_effect The effect size to be added to each group to simulate between-group differences. Default is 10.
+#' @param group_efect The effect size to be added to each group to simulate between-group differences. Default is 10.
 #' @param plot Logical, indicating whether to plot the dataset. Default is FALSE.
 #' @return A list containing three elements: 'X' is a matrix of feature data, 'Y' is the adjusted response vector including group effects, and 'GroupLabels' is a vector indicating the group of each sample.
 #' @examples
@@ -49,16 +52,18 @@ simulate_anova_data <- function(n_groups = 3, n_samples_per_group = 100, n_featu
     group_labels <- group_labels[indices]
   }
 
+  if (plot) {
+    if (n_features == 2) {
+      colors <- rainbow(n_groups)
+      plot(data$X, col=colors[group_labels], pch=19, xlab="Feature 1", ylab="Feature 2", main="Simulated ANOVA Data")
+    } else if (n_features == 3) {
+      colors <- rainbow(n_groups)
+      scatterplot3d(data$X[,1], data$X[,2], data$X[,3], color=colors[group_labels], pch=19, xlab="Feature 1", ylab="Feature 2", zlab="Feature 3", main="Generated ANOVA Data")
+    }
+  }
+
   list("X" = data$X, "Y" = Y_adjusted, "GroupLabels" = group_labels)
 }
 
-
-simulate_anova_data()
-
-simulate_anova_data(n_groups = 5, n_samples_per_group = 50)
-
-simulate_anova_data(noise = 20, bias = 10, random_state = 123)
-
-simulate_anova_data(effective_rank = 20, tail_strength = 0.2)
 
 

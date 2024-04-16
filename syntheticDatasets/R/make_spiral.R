@@ -1,3 +1,5 @@
+library(scatterplot3d)
+
 #' Generate Spiral Dataset
 #'
 #' This function generates a two-dimensional dataset comprising two interwoven spirals. It's useful for visualizing and testing algorithms that require learning complex, non-linear decision boundaries, such as neural networks or advanced clustering techniques.
@@ -57,19 +59,13 @@ make_spiral <- function(n_samples = 100, shuffle = TRUE, noise = NULL, random_st
 
   # plot if specified
   if (plot) {
-    colors <- c("red", "blue")
-    plot(data, col=colors[labels], xlab = "Feature 1", ylab = "Feature 2", pch = 19)
+    colors <- c("red", "cyan")
+    plot(data, col=colors[labels], xlab = "Feature 1", ylab = "Feature 2", pch = 19, main = "Generated Spiral Dataset")
     legend("topright", legend = c("Spiral 1", "Spiral 2"), fill=colors)
   }
 
   return(list("X" = data, "y" = labels))
 }
 
-
-make_spiral(n_samples = 500, plot = TRUE, shuffle = FALSE)
-
-make_spiral(n_samples = 200, noise = 0.1, plot = TRUE, shuffle = FALSE)
-
-make_spiral(n_samples = 200, noise = 0.5, random_state = 123, plot = TRUE)
 
 

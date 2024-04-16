@@ -57,7 +57,7 @@ make_moons <- function(n_samples = 100, shuffle = TRUE, noise = NULL, random_sta
 
   # plot if specified
   if (plot) {
-    plot(data, col = labels, xlab = "Feature 1", ylab = "Feature 2",pch = 19)
+    plot(data, col = labels, xlab = "Feature 1", ylab = "Feature 2",pch = 19, main = "Generated Moons Dataset")
     legend("topright", legend = c("Moon 1", "Moon 2"), col = 1:2, pch = 19)
   }
 

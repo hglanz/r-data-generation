@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 
 # Introduction
 
-The **`syntheticDatasets`** package provides a suite of functions designed to generate synthetic datasets for various applications, including but not limited to machine learning algorithm testing, statistical analysis, and educational purposes. This vignette demonstrates the use of **`syntheticDatasets`** to create datasets that model blobs, circles, spirals, classification challenges, regression, ANOVA tests, and more.
+The **`syntheticDatasets`** package provides a set of functions designed to generate synthetic datasets for various applications, including but not limited to machine learning algorithm testing, statistical analysis, and educational purposes. This vignette demonstrates the use of **`syntheticDatasets`** to create datasets that model blobs, circles, spirals, classification challenges, regression, ANOVA tests, and more.
 
 # Getting Started
 
@@ -30,3 +30,216 @@ First, ensure that you have **`syntheticDatasets`** installed and loaded into yo
 # Load the package
 library(syntheticDatasets)
 ```
+
+# `make_regression`
+
+## Description
+
+This function generates a random regression dataset. The function allows the user to specify the number of samples, the number of features, the number of informative features, the number of targets, bias, effective rank of the matrix that multiplies the features, tail strength, noise level, shuffle, coefficients, random state, and whether to return the coefficients along with the default generated features and target values.
+
+## Usage
+
+```{r}
+make_regression(n_samples = 100, n_features = 100, n_informative = 10, n_targets = 1, 
+                bias = 0.0, effective_rank = None, tail_strength = 0.5, noise = 0.0, 
+                shuffle = TRUE, coef = FALSE, random_state = NULL)
+```
+
+## Output
+
+`X`: An array of shape \[`n_samples`, `n_features`\] with the input samples. `y`: An array of shape \[`n_samples`\] or \[`n_samples`, `n_targets`\] with the output values. `coef`: An array of shape \[`n_features`\] or \[`n_features`, `n_targets`\] with the coefficient of the underlying linear model, returned only if `coef` is `TRUE.`
+
+*Note: the function also prints a plot for 2-dimensional and 3-dimensional data if `plot` parameter is set to `TRUE` in the input*
+
+## Example
+
+```{r}
+make_regression(n_samples = 100, n_features = 2, n_informative = 2, noise = 0.1, plot = TRUE)
+```
+
+# `make_classification`
+
+## Description
+
+This function generates a random n-class classification dataset. It creates clusters of points normally distributed (std=1) and assigns an equal number of clusters to each class. The function allows the user to specify the number of samples, features, informative, redundant and repeated features, classes, and clusters per class. The user can also introduce a class separation factor, flip a percentage of the y labels, introduce a certain level of Gaussian noise into the y labels, and control whether to shuffle the samples and return the informative, redundant, and repeated features.
+
+## Usage
+
+```{r}
+make_classification(n_samples = 100, n_features = 20, n_informative = 2, n_redundant = 2, n_repeated = 0, n_classes = 2, n_clusters_per_class = 2, weights = NULL, flip_y = 0.01, class_sep = 1.0, hypercube = TRUE, shift = 0.0, scale = 1.0, shuffle = TRUE, random_state = NULL)
+
+```
+
+## Output
+
+`X`: An array of shape `[n_samples, n_features]` with the generated samples.
+`y`: An array of shape `[n_samples]` with the integer labels for class membership of each sample.
+`clusters`: An array of shape `[n_classes, n_clusters_per_class, n_features]` with the cluster centers.
+
+## Example
+
+```{r}
+make_classification(n_samples = 100, n_features = 2, n_redundant = 0, 
+                                  n_informative = 2, n_clusters_per_class = 1, plot = TRUE)
+```
+ 
+# `make_blobs`
+
+## Description
+
+This function generates a "blobs" dataset, useful for testing clustering algorithms. The blobs are Gaussian blobs with independent variables for clustering, and the user can specify the number of centers (blobs), the standard deviation of the blobs, and the number of features for each sample. The function can return the blob centers if desired and supports plotting for 2D and 3D data.
+
+## Usage
+```{r}
+make_blobs(n_samples = 100, n_features = 2, centers = NULL, cluster_std = 1, center_box = c(-10, 10), shuffle = TRUE, random_state = NULL, return_centers = FALSE, plot = FALSE)
+```
+
+## Output
+
+`X`: a matrix with the coordinates of each sample
+`y`: a vector indicating the blob (center) each sample belongs to `centers`: are the coordinates of the blob centers if `return_centers` is TRUE
+
+## Example
+
+```{r}
+# default
+make_blobs(plot = TRUE)
+
+# user-sepcified centers and plot
+centers <- matrix(c(0,0, 5,5, 10,10), ncol=2, byrow=TRUE)
+make_blobs(n_samples=300, centers=centers, plot=TRUE)
+
+```
+
+
+# `make_circles`
+
+## Description
+
+The `make_circles` function generates a large circle containing a smaller circle in 2D. This function is useful for models that detect concentric circles (specifically clustering and classification algorithms that explore non-linear decision boundaries). The function allows for customization of noise in the data and a factor that determines the scale between the two circles.
+
+## Usage
+
+```{r}
+make_circles(n_samples = 100, shuffle = TRUE, noise = NULL, random_state = NULL, factor = 0.8, plot = FALSE)
+```
+
+
+## Output
+
+`X`: A `n_samples` by 2 matrix with the generated samples.
+`y`: A binary vector indicating the inner or outer circle to which the samples belong.
+
+
+## Example
+
+```{r}
+make_circles(factor = 0.5, noise = 0.1, plot = TRUE)
+```
+
+
+
+# `make_moons`
+
+## Description
+
+The `make_moons` function generates a two-dimensional dataset containing two interleaving half circles (moons), which is ideal for testing clustering and classification algorithms that need to identify non-linear decision boundaries. This dataset effectively demonstrates the performance of algorithms in scenarios where the classes are not linearly separable. The user can adjust several parameters, such as the number of samples (`n_samples`), whether to introduce noise (`noise`) to the data points, whether to shuffle the samples (`shuffle`), a seed for the random number generator (`random_state`), and an option to visualize the generated moons directly in the function using the `plot` parameter.
+
+## Usage
+
+```{r}
+make_moons(n_samples = 100, shuffle = TRUE, noise = NULL, random_state = NULL, plot = FALSE)
+```
+
+
+## Output
+
+`X`: An array of shape `[n_samples, 2]`, representing the coordinates of each sample point.
+`y`: An array of shape `[n_samples]`, indicating the class (moon) to which each sample belongs.
+
+## Example
+
+```{r}
+make_moons(n_samples = 200, noise = 0.1)
+```
+
+
+# `make_spiral`
+
+## Description
+
+The `make_spiral` function produces a dataset of points arranged in the form of a spiral. This dataset is useful for tasks that require the detection of complex, non-linear patterns. Users can specify the number of samples (`n_samples`), whether to shuffle the data (`shuffle`), the level of noise to introduce (`noise`), and a seed for the random number generator (`random_state`). Optionally, users can choose to visualize the generated spiral pattern directly within the function by setting `plot` to `TRUE.`
+
+## Usage
+
+```{r}
+make_spiral(n_samples = 100, shuffle = TRUE, noise = NULL, random_state = NULL, plot = FALSE)
+```
+
+## Output
+
+`X`: An array with the shape `[n_samples, 2]`, representing the coordinates of each sample point.
+`y`: An array with the shape `[n_samples]`, indicating the class (spiral arm) to which each sample belongs.
+
+## Example
+
+```{r}
+make_spiral(n_samples = 300, noise = 0.05, plot = TRUE)
+```
+
+
+# `make_4square`
+
+## Description
+
+The `make_four_square_dataset` function generates a synthetic dataset where points are evenly distributed across four distinct squares. This type of dataset is excellent for demonstrating clustering and classification algorithms that require the identification of distinct groups within a two-dimensional space. Users can configure several parameters, including the number of samples (`n_samples`), the distance between the squares (`distance`), the level of noise (`noise`) to add randomness to the data points, whether to shuffle the data (`shuffle`), and a seed for the random number generator (`random_state`). Additionally, users can specify whether to plot the dataset directly by setting the `plot` parameter to TRUE.
+
+## Usage
+
+```{r}
+make_four_square_dataset(n_samples = 100, distance = 1, noise = 0.1, shuffle = TRUE, random_state = NULL, plot = FALSE)
+
+```
+
+
+## Output
+
+`X`: An array of shape `[n_samples, 2]`, representing the coordinates of each sample point within the squares.
+`y`: An array of shape `[n_samples]`, indicating which of the four squares each sample belongs to.
+
+## Example
+
+```{r}
+make_four_square_dataset(n_samples = 200, noise = 0.05)
+```
+
+
+# `make_anova`
+
+## Description
+
+The `simulate_anova_data` function generates synthetic data suitable for analysis with ANOVA (Analysis of Variance), which is used to compare the means of three or more groups. This function allows users to customize various aspects of the data generation process. The parameters include the number of groups (`groups`), the number of observations per group (`n_per_group`), the mean values for each group (`group_means`), the common standard deviation across groups (`sd`), and a seed for the random number generator (`random_state`). This function helps in understanding how ANOVA reacts to different group variances and means, and is useful in teaching or demonstrating statistical concepts.
+
+## Usage
+
+```{r}
+simulate_anova_data(groups = 3, n_per_group = 30, group_means = c(0, 1, 2), sd = 1, random_state = NULL)
+
+```
+
+
+## Output
+
+`group`: A factor indicating the group to which each observation belongs.
+`value`: The numeric values of the observations, which are normally distributed around the group means with the specified standard deviation.
+
+## Example
+
+```{r}
+simulate_anova_data(groups = 3, n_per_group = 50, group_means = c(0, 5, 10), sd = 2)
+
+```
+
+
+
+

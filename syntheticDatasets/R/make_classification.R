@@ -1,3 +1,5 @@
+library(scatterplot3d)
+
 #' Generate Synthetic Classification Dataset
 #'
 #' This function generates a random n-class classification problem. This dataset is useful for testing classification algorithms. It can simulate datasets with various levels of complexity and class separation.
@@ -82,46 +84,20 @@ make_classification <- function(n_samples = 100, n_features = 20, n_informative 
   }
 
   # plot if needed
-  if (plot && n_features >= 2) {
-    colors <- c('red', 'blue', 'green', 'yellow', 'purple', 'orange')[1:n_classes]
-    plot(X[,1], X[,2], col=colors[labels + 1], xlab="Feature 1", ylab="Feature 2", main="Classification Plot", pch = 19)
-    legend("topright", legend=paste("Class", 0:(n_classes-1)), fill=colors[1:n_classes])
-  } else if (plot) {
-    warning("Plotting requires at least 2 features.")
+  if (plot) {
+    colors <- rainbow(n_classes)
+    if (n_features == 3) {
+      scatterplot3d(X[, 1], X[, 2], X[, 3], color = colors[labels + 1], pch = 19,
+                    xlab = "Feature 1", ylab = "Feature 2", zlab = "Feature 3",
+                    main = "Generated 3D Classification Plot")
+    } else if (n_features == 2) {
+      plot(X[, 1], X[, 2], col = colors[labels + 1], pch = 19,
+           xlab = "Feature 1", ylab = "Feature 2", main = "Generated 2D Classification Plot")
+      legend("topright", legend = paste("Class", 0:(n_classes-1)), fill = colors)
+    } else {
+      warning("Plotting requires 2 or 3 features.")
+    }
   }
 
   return(list("X" = X, "labels" = labels))
 }
-
-# plotting and testing
-
-
-# Test cases
-
-# Default settings
-make_classification(plot=TRUE)
-
-# Increase informative features
-make_classification(n_informative=4, plot=TRUE)
-
-# High class separation
-make_classification(class_sep=2.0, plot=TRUE)
-
-# More samples, high noise (flip_y)
-make_classification(n_samples=200, flip_y=0.1, plot=TRUE)
-
-# More clusters per class
-make_classification(n_clusters_per_class=3, plot=TRUE)
-
-# Unbalanced class weights
-make_classification(weights=c(0.7, 0.3), plot=TRUE)
-
-# Only informative features
-make_classification(n_redundant=0, n_repeated=0, plot=TRUE)
-
-# Many features, mostly noise
-make_classification(n_features=40, n_informative=2, plot=TRUE)
-
-# Different scale
-make_classification(scale=0.5, plot=TRUE)
-
