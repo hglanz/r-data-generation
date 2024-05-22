@@ -1,5 +1,6 @@
 library(scatterplot3d)
-
+okabe_ito_colors <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442",
+                      "#0072B2", "#D55E00", "#CC79A7", "#999999")
 #' Generate Circles Dataset
 #'
 #' This function generates a two-dimensional dataset comprising two circles, one within the other, known as the "circles" dataset.
@@ -52,8 +53,9 @@ make_circles <- function(n_samples = 100, shuffle = TRUE, noise = NULL, random_s
   labels <- c(rep(1, n_samples / 2), rep(2, n_samples / 2))
 
   if (plot) {
-    plot(data, col = labels, asp = 1, xlab = "Feature 1", ylab = "Feature 2", main = "Generated Circles Dataset", pch = 16)
-    legend("topright", legend = c("Outer Circle", "Inner Circle"), col = 1:2 ,pch = 16 )
+    colors <- okabe_ito_colors[1:2]
+    plot(data, col = colors[labels], asp = 1, xlab = "Feature 1", ylab = "Feature 2", main = "Generated Circles Dataset", pch = 16)
+    legend("topright", legend = c("Outer Circle", "Inner Circle"), col = colors[1:3] ,pch = 16 )
   }
 
   return(list("data" = data, "labels" = labels))

@@ -1,5 +1,6 @@
 library(scatterplot3d)
-
+okabe_ito_colors <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442",
+                      "#0072B2", "#D55E00", "#CC79A7", "#999999")
 #' Generate Spiral Dataset
 #'
 #' This function generates a two-dimensional dataset comprising two interwoven spirals. It's useful for visualizing and testing algorithms that require learning complex, non-linear decision boundaries, such as neural networks or advanced clustering techniques.
@@ -59,7 +60,7 @@ make_spiral <- function(n_samples = 100, shuffle = TRUE, noise = NULL, random_st
 
   # plot if specified
   if (plot) {
-    colors <- c("red", "cyan")
+    colors <- okabe_ito_colors[1:2]
     plot(data, col=colors[labels], xlab = "Feature 1", ylab = "Feature 2", pch = 19, main = "Generated Spiral Dataset")
     legend("topright", legend = c("Spiral 1", "Spiral 2"), fill=colors)
   }

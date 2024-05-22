@@ -1,3 +1,6 @@
+okabe_ito_colors <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442",
+                      "#0072B2", "#D55E00", "#CC79A7", "#999999")
+
 #' Generate Four Square Dataset
 #'
 #' This function generates a synthetic dataset that consists of points distributed in four squares.
@@ -17,7 +20,7 @@
 #' # Generate a dataset with noise and plot it
 #' noisy_dataset <- make_four_square_dataset(n_samples=1000, noise=0.1, plot=TRUE)
 #' @export
-make_four_square_dataset <- function(n_samples=100, noise=0.0, shuffle=TRUE, random_state=NULL, plot=FALSE) {
+make_four_square <- function(n_samples=100, noise=0.0, shuffle=TRUE, random_state=NULL, plot=FALSE) {
 
   if (!is.null(random_state)) {
     set.seed(random_state)
@@ -55,7 +58,7 @@ make_four_square_dataset <- function(n_samples=100, noise=0.0, shuffle=TRUE, ran
   }
 
   if (plot) {
-    colors <- c("red", "cyan")
+    colors <- okabe_ito_colors[1:2]
     plot(features, col=colors[target], pch=19, xlab="Feature 1", ylab="Feature 2", main = "Generated 4-Square Dataset")
     legend("topright", legend=c("Class 1", "Class 2"), fill=colors)
   }
@@ -63,13 +66,5 @@ make_four_square_dataset <- function(n_samples=100, noise=0.0, shuffle=TRUE, ran
   list("features" = features, "target" = target)
 }
 
-# perfect 4 squares
-make_four_square_dataset(n_samples=1000, shuffle=FALSE, random_state=123, plot=TRUE)
-# noise added
-make_four_square_dataset(n_samples=1000, noise=0.1, shuffle=TRUE, random_state=123, plot=TRUE)
-# larger dataset and lower noise
-make_four_square_dataset(n_samples=2000, noise=0.05, shuffle=TRUE, random_state=123, plot=TRUE)
-# high noise
-make_four_square_dataset(n_samples=1000, noise=0.3, shuffle=TRUE, random_state=123, plot=TRUE)
 
 

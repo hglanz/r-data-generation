@@ -24,8 +24,3 @@ https://sites.math.washington.edu/~ebekyel/Math126/Spiral.html
 Interesting article I was reading:
 https://www.mdpi.com/2227-7390/10/15/2733
 
-
-
-Ideas to expand on:
-Clustering: For unsupervised learning through clustering algorithms like K-means, hierarchical clustering, DBSCAN
-Generalized Linear Models (GLMs): For GLMs, including logistic regression, Poisson regression, and their applications in various fields.

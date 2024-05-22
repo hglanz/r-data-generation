@@ -1,3 +1,5 @@
+okabe_ito_colors <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442",
+                      "#0072B2", "#D55E00", "#CC79A7", "#999999")
 #' Generate Moons Dataset
 #'
 #' This function generates a two-dimensional dataset comprising two interleaving half circles, known as the "moons" dataset. It is particularly useful for visualizing and testing clustering and classification algorithms that require a non-linear decision boundary.
@@ -57,41 +59,12 @@ make_moons <- function(n_samples = 100, shuffle = TRUE, noise = NULL, random_sta
 
   # plot if specified
   if (plot) {
-    plot(data, col = labels, xlab = "Feature 1", ylab = "Feature 2",pch = 19, main = "Generated Moons Dataset")
-    legend("topright", legend = c("Moon 1", "Moon 2"), col = 1:2, pch = 19)
+    colors <- okabe_ito_colors[1:2]
+    plot(data, col = colors[labels], xlab = "Feature 1", ylab = "Feature 2",pch = 19, main = "Generated Moons Dataset")
+    legend("topright", legend = c("Moon 1", "Moon 2"), col = colors, pch = 19)
   }
 
   return(list("X" = data, "y" = labels))
 }
 
-
-# Default settings
-make_moons(plot = TRUE)
-
-# Higher number of samples
-make_moons(n_samples = 300, plot = TRUE)
-
-# noise
-make_moons(noise = 0.1, plot = TRUE)
-
-# Increased noise
-make_moons(noise = 0.3, plot = TRUE)
-
-# No shuffle
-make_moons(shuffle = FALSE, plot = TRUE)
-
-# Specific random state for reproducibility
-make_moons(random_state = 42, plot = TRUE)
-
-# Large number of samples with noise
-make_moons(n_samples = 500, noise = 0.1, plot = TRUE)
-
-# Large number of samples, high noise, no shuffle
-make_moons(n_samples = 500, noise = 0.2, shuffle = FALSE, plot = TRUE)
-
-# Medium noise with a specific random state
-make_moons(noise = 0.15, random_state = 24, plot = TRUE)
-
-# High noise, no shuffle, specific random state
-make_moons(noise = 0.25, shuffle = FALSE, random_state = 11, plot = TRUE)
-
+# change colors

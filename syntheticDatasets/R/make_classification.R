@@ -1,5 +1,8 @@
 library(scatterplot3d)
 
+okabe_ito_colors <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442",
+                      "#0072B2", "#D55E00", "#CC79A7", "#999999")
+
 #' Generate Synthetic Classification Dataset
 #'
 #' This function generates a random n-class classification problem. This dataset is useful for testing classification algorithms. It can simulate datasets with various levels of complexity and class separation.
@@ -85,7 +88,10 @@ make_classification <- function(n_samples = 100, n_features = 20, n_informative 
 
   # plot if needed
   if (plot) {
-    colors <- rainbow(n_classes)
+    if (n_classes > length(okabe_ito_colors)) {
+      stop("Number of classes exceeds available colors in Okabe-Ito palette.")
+    }
+    colors <- okabe_ito_colors[1:n_classes]
     if (n_features == 3) {
       scatterplot3d(X[, 1], X[, 2], X[, 3], color = colors[labels + 1], pch = 19,
                     xlab = "Feature 1", ylab = "Feature 2", zlab = "Feature 3",
@@ -101,3 +107,23 @@ make_classification <- function(n_samples = 100, n_features = 20, n_informative 
 
   return(list("X" = X, "labels" = labels))
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

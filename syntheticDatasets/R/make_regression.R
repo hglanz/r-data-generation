@@ -34,9 +34,6 @@ make_regression <- function(n_samples=100, n_features=100, n_informative=10, n_t
     set.seed(random_state)
   }
 
-  # set the number of informative coefficients
-  coefficients <- rnorm(n_informative)
-
   # random data values
   # initial feature matrix (X) with more features than the effective rank
   X <- matrix(rnorm(n_samples * n_features), nrow=n_samples, ncol=n_features)
@@ -56,7 +53,6 @@ make_regression <- function(n_samples=100, n_features=100, n_informative=10, n_t
 
     #  linearly reducing the magnitude of each successive singular value from the largest to the kth value
     # adjust each of the top k singular values by a factor that decreases linearly
-
     decay_factor <- seq(from = 1, to = tail_strength, length.out = k)
     Sigma_adjusted[1:k] <- Sigma_adjusted[1:k] * decay_factor
 
@@ -65,22 +61,19 @@ make_regression <- function(n_samples=100, n_features=100, n_informative=10, n_t
     X <- X_adjusted
   }
 
-
   # target data. Y = intercept + coeff * X + error
-  informative_X <- X[, seq(n_informative)]
   if (n_targets == 1) {
     Y <- matrix(nrow=n_samples, ncol=1)
   } else {
     Y <- matrix(nrow=n_samples, ncol=n_targets)
   }
 
+  coefficients <- matrix(rnorm(n_informative), ncol = 1)
+
+  informative_X <- X[, seq(n_informative), drop = FALSE]
+
   for (target in 1:n_targets) {
     Y[, target] <- bias + informative_X %*% coefficients + rnorm(n_samples, sd=noise)
-  }
-
-  # multi-output check
-  if (n_targets > 1) {
-    Y <- matrix(Y, ncol=n_targets)
   }
 
   # shuffle if requested
@@ -96,15 +89,15 @@ make_regression <- function(n_samples=100, n_features=100, n_informative=10, n_t
     list("X"=X, "Y"=Y)
   }
 
-  if (plot && n_features >= 3 && n_targets == 1) {
-    scatterplot3d(X[,1], X[,2], X[,3], color=rainbow(n_samples)[rank(Y)], pch=19,
-                  xlab="Feature 1", ylab="Feature 2", zlab="Feature 3", main="Generated 3D Regression Data")
-  } else if (plot && n_features >= 2 && n_targets == 1) {
-    plot(X[,1], Y, col=rainbow(n_samples)[rank(Y)], xlab="Feature 1", ylab="Target", pch=19, main="Generated 2D Regression Data")
+  if (plot && n_features == 2 && n_targets == 1) {
+    scatterplot3d(X[,1], X[,2], Y, color="#0072B2", pch=19,
+                  xlab="Feature 1", ylab="Feature 2", zlab="Target", main="Generated 3D Regression Data")
+  } else if (plot && n_features == 1 && n_targets == 1) {
+    plot(X[,1], Y, col="#0072B2", xlab="Feature 1", ylab="Target", pch=19, main="Generated 2D Regression Data")
   } else {
     warning("Plotting requires at least 2 features and supports only one target.")
   }
 
   return(result)
-
 }
+

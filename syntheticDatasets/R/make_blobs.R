@@ -1,5 +1,6 @@
 library(scatterplot3d)
-
+okabe_ito_colors <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442",
+                      "#0072B2", "#D55E00", "#CC79A7", "#999999")
 #' Generate Blob Dataset
 #'
 #' This function generates a "blobs" dataset, useful for testing clustering algorithms. The blobs are isotropic Gaussian blobs for clustering, and the user can specify the number of centers (blobs), the standard deviation of the blobs, and the number of features for each sample. The function can return the blob centers if desired and supports plotting for 2D and 3D data.
@@ -59,14 +60,15 @@ make_blobs <- function(n_samples=100, n_features=2, centers=NULL, cluster_std=1.
 
   if (plot) {
     if (n_features == 2) {
-      colors <- rainbow(n_centers)
+      colors <- okabe_ito_colors[1:n_centers]
       plot(X, col=colors[cluster_labels], pch=19, xlab="Feature 1", ylab="Feature 2", main="Generated Blob Clusters")
+      legend("topright", legend = paste("Blob", 1:n_centers), fill = colors)
       if (return_centers) {
         points(centers, pch=4, col=1:n_centers, lwd=2)
       }
     } else if (n_features == 3) {
       colors <- rainbow(n_centers)
-      scatterplot3d(X[,1], X[,2], X[,3], color=colors[cluster_labels], pch=19, xlab="Feature 1", ylab="Feature 2", zlab="Feature 3", main="Generated Blob Clusters")
+      scatterplot3d(X[,1], X[,2], X[,3], color=colors[cluster_labels], pch=19, xlab="Feature 1", ylab="Feature 2", zlab="Target", main="Generated Blob Clusters")
       if (return_centers) {
         scatterplot3d(centers[,1], centers[,2], centers[,3], color=1:n_centers, pch=4, lwd=2, add=TRUE)
       }
@@ -81,5 +83,4 @@ make_blobs <- function(n_samples=100, n_features=2, centers=NULL, cluster_std=1.
     return(list("X"=X, "y"=cluster_labels))
   }
 }
-
 
