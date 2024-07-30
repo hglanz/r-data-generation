@@ -44,18 +44,20 @@ make_circles <- function(n_samples = 100, shuffle = TRUE, noise = NULL, random_s
     data <- data + matrix(rnorm(2 * n_samples, sd = noise), ncol = 2)
   }
 
+  # create labels 1 and 2 for the two classes
+  labels <- c(rep(1, n_samples / 2), rep(2, n_samples / 2))
+
   # shuffle
   if (shuffle) {
-    data <- data[sample(n_samples), ]
+    indices <- sample(n_samples)
+    data <- data[indices, ]
+    labels <- labels[indices]
   }
-
-  # create labels 1 and 2 for the two classes (already in order so we can just assign down the middle)
-  labels <- c(rep(1, n_samples / 2), rep(2, n_samples / 2))
 
   if (plot) {
     colors <- okabe_ito_colors[1:2]
     plot(data, col = colors[labels], asp = 1, xlab = "Feature 1", ylab = "Feature 2", main = "Generated Circles Dataset", pch = 16)
-    legend("topright", legend = c("Outer Circle", "Inner Circle"), col = colors[1:3] ,pch = 16 )
+    legend("topright", legend = c("Outer Circle", "Inner Circle"), col = colors[1:2], pch = 16)
   }
 
   return(list("data" = data, "labels" = labels))

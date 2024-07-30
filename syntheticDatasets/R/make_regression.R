@@ -89,13 +89,13 @@ make_regression <- function(n_samples=100, n_features=100, n_informative=10, n_t
     list("X"=X, "Y"=Y)
   }
 
-  if (plot && n_features == 2 && n_targets == 1) {
-    scatterplot3d(X[,1], X[,2], Y, color="#0072B2", pch=19,
-                  xlab="Feature 1", ylab="Feature 2", zlab="Target", main="Generated 3D Regression Data")
-  } else if (plot && n_features == 1 && n_targets == 1) {
-    plot(X[,1], Y, col="#0072B2", xlab="Feature 1", ylab="Target", pch=19, main="Generated 2D Regression Data")
-  } else {
-    warning("Plotting requires at least 2 features and supports only one target.")
+  if (plot && n_features >= 2 && n_targets == 1) {
+    if (n_features == 2) {
+      scatterplot3d(X[,1], X[,2], Y, color="#0072B2", pch=19,
+                    xlab="Feature 1", ylab="Feature 2", zlab="Target", main="Generated 3D Regression Data")
+    } else {
+      plot(X[,1], Y, col="#0072B2", xlab="Feature 1", ylab="Target", pch=19, main="Generated 2D Regression Data")
+    }
   }
 
   return(result)

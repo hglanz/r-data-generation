@@ -49,10 +49,6 @@ make_classification(
 \item{scale}{Vector indicating the feature scale. If \code{NULL}, no scaling is applied.}
 
 \item{plot}{Logical, indicating whether to plot the dataset. Supported only for datasets with 2 or more features.}
-
-\item{hypercube}{Logical, indicating whether the clusters are placed on the vertices of a hypercube.}
-
-\item{shift}{Vector indicating the feature shift. If \code{NULL}, no shift is applied.}
 }
 \value{
 A list containing the feature matrix 'X' and the vector 'labels' of class labels for each sample.

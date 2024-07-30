@@ -15,4 +15,4 @@ Imports:
     dplyr,
     scatterplot3d,
     here
-
+Config/testthat/edition: 3

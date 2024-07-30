@@ -31,7 +31,8 @@ make_blobs <- function(n_samples=100, n_features=2, centers=NULL, cluster_std=1.
 
   if (is.null(centers)) {
     n_centers <- 3
-  } else if (is.numeric(centers)) {
+    centers <- matrix(runif(n_centers * n_features, min=center_box[1], max=center_box[2]), nrow=n_centers)
+  } else if (is.numeric(centers) && length(centers) == 1) {
     n_centers <- centers
     centers <- matrix(runif(n_centers * n_features, min=center_box[1], max=center_box[2]), nrow=n_centers)
   } else {
@@ -43,11 +44,7 @@ make_blobs <- function(n_samples=100, n_features=2, centers=NULL, cluster_std=1.
 
   X <- matrix(nrow=n_samples, ncol=n_features)
   for (i in 1:n_centers) {
-    center <- if (is.null(centers)) {
-      runif(n_features, min=center_box[1], max=center_box[2])
-    } else {
-      centers[i, ]
-    }
+    center <- centers[i, ]
     indices <- which(cluster_labels == i)
     X[indices, ] <- mapply(rnorm, n=length(indices), mean=center, sd=cluster_std)
   }
@@ -67,8 +64,8 @@ make_blobs <- function(n_samples=100, n_features=2, centers=NULL, cluster_std=1.
         points(centers, pch=4, col=1:n_centers, lwd=2)
       }
     } else if (n_features == 3) {
-      colors <- rainbow(n_centers)
-      scatterplot3d(X[,1], X[,2], X[,3], color=colors[cluster_labels], pch=19, xlab="Feature 1", ylab="Feature 2", zlab="Target", main="Generated Blob Clusters")
+      colors <- okabe_ito_colors[1:n_centers]
+      scatterplot3d(X[,1], X[,2], X[,3], color=colors[cluster_labels], pch=19, xlab="Feature 1", ylab="Feature 2", zlab="Feature 3", main="Generated Blob Clusters")
       if (return_centers) {
         scatterplot3d(centers[,1], centers[,2], centers[,3], color=1:n_centers, pch=4, lwd=2, add=TRUE)
       }
@@ -83,4 +80,3 @@ make_blobs <- function(n_samples=100, n_features=2, centers=NULL, cluster_std=1.
     return(list("X"=X, "y"=cluster_labels))
   }
 }
-
