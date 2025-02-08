@@ -6,7 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Your Name">
+<meta name="author" content="Aditi Gajjar">
+<meta name="dcterms.date" content="2025-02-08">
 
 <title>Generating Various Synthetic Datasets</title>
 <style>
@@ -90,14 +91,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Your Name </p>
+             <p>Aditi Gajjar </p>
           </div>
   </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Invalid Date</p>
+      <p class="date">February 8, 2025</p>
     </div>
   </div>
   
@@ -144,26 +145,99 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example-usage" class="level2">
 <h2 class="anchored" data-anchor-id="example-usage">Example Usage</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(syntheticDatasets)</span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(syntheticDatasets)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate default ANOVA data</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>anova_data <span class="ot">&lt;-</span> <span class="fu">make_anova</span>()</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(anova_data)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate ANOVA data with 5 groups, each with 50 samples</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>custom_anova_data <span class="ot">&lt;-</span> <span class="fu">make_anova</span>(<span class="at">n_groups =</span> <span class="dv">5</span>, <span class="at">n_samples_per_group =</span> <span class="dv">50</span>)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(custom_anova_data)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply group effects</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>group_effect_anova_data <span class="ot">&lt;-</span> <span class="fu">make_anova</span>(<span class="at">n_groups =</span> <span class="dv">3</span>, <span class="at">n_samples_per_group =</span> <span class="dv">100</span>, <span class="at">group_effect =</span> <span class="dv">20</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(group_effect_anova_data)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Shuffle samples</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>shuffled_anova_data <span class="ot">&lt;-</span> <span class="fu">make_anova</span>(<span class="at">n_groups =</span> <span class="dv">3</span>, <span class="at">n_samples_per_group =</span> <span class="dv">100</span>, <span class="at">shuffle =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(shuffled_anova_data)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">make_anova</span>(<span class="at">n_groups =</span> <span class="dv">3</span>, <span class="at">n_samples_per_group =</span> <span class="dv">100</span>, <span class="at">n_features =</span> <span class="dv">2</span>, <span class="at">plot =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(anova_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 3
+ $ X          : num [1:300, 1:100] 0.128 -0.533 0.925 -1.686 -1.307 ...
+ $ Y          : num [1:300] 32 22.9 21.5 15.5 38 ...
+ $ GroupLabels: int [1:300] 2 3 3 2 3 1 2 3 1 3 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate ANOVA data with 5 groups, each with 50 samples</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>custom_anova_data <span class="ot">&lt;-</span> <span class="fu">make_anova</span>(<span class="at">n_groups =</span> <span class="dv">5</span>, <span class="at">n_samples_per_group =</span> <span class="dv">50</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(custom_anova_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 3
+ $ X          : num [1:250, 1:100] -0.809 1.048 0.193 2.386 0.471 ...
+ $ Y          : num [1:250] 8.38 25.86 -10.22 18.58 12.52 ...
+ $ GroupLabels: int [1:250] 1 3 1 2 1 3 4 3 2 1 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply group effects</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>group_effect_anova_data <span class="ot">&lt;-</span> <span class="fu">make_anova</span>(<span class="at">n_groups =</span> <span class="dv">3</span>, <span class="at">n_samples_per_group =</span> <span class="dv">100</span>, <span class="at">group_effect =</span> <span class="dv">20</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(group_effect_anova_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 3
+ $ X          : num [1:300, 1:100] -0.763 -0.293 -0.902 0.53 -0.488 ...
+ $ Y          : num [1:300] 58.2 35 62.9 22.9 62.4 ...
+ $ GroupLabels: int [1:300] 3 2 3 1 3 1 3 1 2 2 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shuffle samples</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>shuffled_anova_data <span class="ot">&lt;-</span> <span class="fu">make_anova</span>(<span class="at">n_groups =</span> <span class="dv">3</span>, <span class="at">n_samples_per_group =</span> <span class="dv">100</span>, <span class="at">shuffle =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(shuffled_anova_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>List of 3
+ $ X          : num [1:300, 1:100] -0.0149 -0.9279 1.7966 -0.3577 0.252 ...
+ $ Y          : num [1:300] 9.42 25 24.82 15.95 39.59 ...
+ $ GroupLabels: int [1:300] 2 2 2 2 3 2 2 1 2 3 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>shuffled_anova_data<span class="sc">$</span>Y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  [1]  9.4202898 25.0009294 24.8152816 15.9513208 39.5948990  1.9907688
+  [7] 11.3971603  8.5828745 18.5292551 22.4273938 18.5142824 16.1228592
+ [13] 14.2889680 29.6983152 20.9114460 32.0285795  7.7676994 10.7128467
+ [19] 28.3942418 32.1858973 14.2355106 35.4966117 38.7584963 39.7822331
+ [25] 22.0434731 32.3863191  0.3280709 12.9373383 27.8943079 13.8933073
+ [31] 15.5726852  9.7488712 12.0709140  3.6755826 12.4984488  6.0562364
+ [37] 21.5174718  0.1419448 13.6609909 28.8543080 15.1134814  5.6706686
+ [43] 36.0640019  9.3967443 23.4773066 33.3756737 37.6921039 33.4811691
+ [49]  7.9358993 14.4441617 26.3335191 19.2761222 18.1283610 14.7347202
+ [55] 34.6156333 22.5873120 10.4437169  7.1875953 28.0168083 14.8218482
+ [61] 12.2766124 26.9065093 18.1900173 22.4747893 30.6779839 12.7543763
+ [67] 20.3593921  5.1073435 17.9025483 39.6882534 25.8581750 19.8800617
+ [73] 16.9507798 34.9350060 40.0468219 17.7078395 12.4320501 20.6288138
+ [79] 27.4576172  6.5782243 24.5910318 13.7365267  6.1115848  2.7345823
+ [85] 33.1694677 25.9665577 42.2284915  7.1861762 29.0699676 25.0943041
+ [91] 19.8633699  0.1742438 29.7304195 32.2310057 26.8231209 33.1852304
+ [97] 24.6382500  6.5878184 28.6590127 16.6477926 18.9850375 20.6580273
+[103] 20.7532575 27.7301155 28.3363840  3.4762459 19.4526392 21.6563197
+[109] 24.5545555 29.0475648 19.2392594 24.1245674  3.9868127 11.7995878
+[115] 13.6826074 10.2920975 19.0600907 31.4787921 33.0159585  2.9302355
+[121] 17.1737527  5.4259063 30.8913120 23.9583399 18.4033442 16.7415147
+[127] 14.4028681 33.3225928 32.3942064 12.8243104  4.6777479 21.6393750
+[133] 37.7973449  1.2659894 24.0920757  7.8669815 24.2018632 19.1958463
+[139] 19.2697989 13.3368096  8.1882238 32.3265916 26.1836995 13.5076303
+[145] 15.7322366 23.9188579 14.2664474 24.5278479 12.3749224 23.7420133
+[151]  4.0144591 33.2915184 33.0583683 25.7625190 18.1931743  9.5492779
+[157] 25.8911445 23.7730097 25.6073650 24.8801571 29.9731113 19.4757214
+[163] 25.8156693 27.5389679 21.7113642 24.6105991 34.4358032 32.1743046
+[169] 31.8486756 39.6941194 20.7685167  7.0021585 24.4722166 36.1828052
+[175]  9.4352110 22.9777658 13.5389320 30.6160337 27.8021919 25.1389989
+[181] 18.1208769 19.1435015 14.6714613 28.6754737  6.2090621 14.0426279
+[187] 17.4551821 22.3367634 14.6849847 31.0279989 10.3337827  4.5327934
+[193] 35.3654274 18.5053702 14.7692766 11.6158500 10.3386254 34.6195381
+[199] 37.5404912 32.6001283 26.2076401 13.9689839 29.0714356  5.7271240
+[205] 36.4388697  0.2953134 15.5433109 38.0361290 30.5996318 11.6128802
+[211] 19.2125844 37.4366631 12.2029606 11.7880557  8.4248390 11.7391663
+[217] 32.3907699 41.4220137 12.2472073 28.9567357 34.6699955 21.9751266
+[223]  7.1510828 39.1073904 16.5879239 22.0343105 10.3156798 28.4601566
+[229] 30.9396554  8.0347358 14.3558661 11.0266936 12.7013574 19.6025269
+[235] 14.5585097 19.2114638 19.3911726 10.0593777 17.9701673 12.4531003
+[241] 18.7206857 25.7921924 36.6112922  5.0897663 28.3502946 27.0125386
+[247] 20.5594126 34.6259080  0.7425678 12.6788644  6.3073728  1.2037293
+[253] 22.4524922 23.0427519 29.2206991 10.9017915 20.2678848 17.1574887
+[259] 38.9552009 21.4466842 15.3555180  7.6141267 29.4376308 25.7797453
+[265] 34.7182269 23.0731478 21.0073975 15.7438142 15.0424789 36.0937720
+[271] 25.9779222 36.9246414 22.7466748  4.4279065 20.9826883 28.3350627
+[277]  1.5989625 20.3734546  0.1216891 34.5551924 22.2830456 27.2973791
+[283]  4.3011523 10.4460669 12.9810183 11.1207218 30.2872320 41.2370440
+[289] 24.5193725  6.0593999 20.6327431 10.5301617 32.2592944 30.9948696
+[295]  4.0266873 30.9936236 20.4162119 34.4052231 26.7978775  3.7417407</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="make_regression" class="level1">
@@ -188,14 +262,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="example-usage-1" class="level2">
 <h2 class="anchored" data-anchor-id="example-usage-1">Example Usage</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a simple regression dataset and plot it</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>simple_regression <span class="ot">&lt;-</span> <span class="fu">make_regression</span>(<span class="at">plot =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a regression dataset with more informative features and plot it</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>informative_regression <span class="ot">&lt;-</span> <span class="fu">make_regression</span>(<span class="at">n_features=</span><span class="dv">200</span>, <span class="at">n_informative=</span><span class="dv">50</span>, <span class="at">plot=</span><span class="cn">TRUE</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a multi-output regression dataset and plot it</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>multi_output_regression <span class="ot">&lt;-</span> <span class="fu">make_regression</span>(<span class="at">n_targets=</span><span class="dv">2</span>, <span class="at">plot=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a simple regression dataset and plot it</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>simple_regression <span class="ot">&lt;-</span> <span class="fu">make_regression</span>(<span class="at">plot =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="introduction_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a regression dataset with more informative features and plot it</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>informative_regression <span class="ot">&lt;-</span> <span class="fu">make_regression</span>(<span class="at">n_features=</span><span class="dv">200</span>, <span class="at">n_informative=</span><span class="dv">50</span>, <span class="at">plot=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="introduction_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a multi-output regression dataset and plot it</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>multi_output_regression <span class="ot">&lt;-</span> <span class="fu">make_regression</span>(<span class="at">n_targets=</span><span class="dv">2</span>, <span class="at">plot=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 </section>
 <section id="make_spiral" class="level1">
@@ -203,9 +283,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>make_spiral</code> function generates a two-dimensional spiral dataset, which is useful for testing clustering algorithms and visualizations.</p>
 <section id="example-usage-2" class="level2">
 <h2 class="anchored" data-anchor-id="example-usage-2">Example Usage</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a spiral dataset</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>spiral_data <span class="ot">&lt;-</span> <span class="fu">make_spiral</span>()</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(spiral_data<span class="sc">$</span>x, spiral_data<span class="sc">$</span>y, <span class="at">col =</span> spiral_data<span class="sc">$</span>label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a spiral dataset</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>spiral_data <span class="ot">&lt;-</span> <span class="fu">make_spiral</span>(<span class="at">plot =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="introduction_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 </section>
 <section id="make_moons" class="level1">
@@ -213,9 +297,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>make_moons</code> function generates a two-dimensional dataset with two interleaving half circles, commonly used for binary classification tasks.</p>
 <section id="example-usage-3" class="level2">
 <h2 class="anchored" data-anchor-id="example-usage-3">Example Usage</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a moons dataset</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>moons_data <span class="ot">&lt;-</span> <span class="fu">make_moons</span>()</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(moons_data<span class="sc">$</span>x, moons_data<span class="sc">$</span>y, <span class="at">col =</span> moons_data<span class="sc">$</span>label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a moons dataset</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>moons_data <span class="ot">&lt;-</span> <span class="fu">make_moons</span>(<span class="at">plot=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="introduction_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 </section>
 <section id="make_four_square" class="level1">
@@ -223,9 +311,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>make_four_square</code> function generates a two-dimensional dataset with four clusters, arranged in a square pattern.</p>
 <section id="example-usage-4" class="level2">
 <h2 class="anchored" data-anchor-id="example-usage-4">Example Usage</h2>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a four square dataset</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>four_square_data <span class="ot">&lt;-</span> <span class="fu">make_four_square</span>()</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(four_square_data<span class="sc">$</span>x, four_square_data<span class="sc">$</span>y, <span class="at">col =</span> four_square_data<span class="sc">$</span>label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>four_square_data <span class="ot">&lt;-</span> <span class="fu">make_four_square</span>(<span class="at">plot=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="introduction_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 </section>
 <section id="make_classification" class="level1">
@@ -233,9 +324,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>make_classification</code> function generates a random multi-class classification problem.</p>
 <section id="example-usage-5" class="level2">
 <h2 class="anchored" data-anchor-id="example-usage-5">Example Usage</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a classification dataset</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>classification_data <span class="ot">&lt;-</span> <span class="fu">make_classification</span>()</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(classification_data<span class="sc">$</span>x, classification_data<span class="sc">$</span>y, <span class="at">col =</span> classification_data<span class="sc">$</span>label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a classification dataset</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>classification_data <span class="ot">&lt;-</span> <span class="fu">make_classification</span>(<span class="at">plot=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in make_classification(plot = T): Plotting requires 2 or 3 features.</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="make_circles" class="level1">
@@ -243,9 +338,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>make_circles</code> function generates a large circle containing a smaller circle in two dimensions.</p>
 <section id="example-usage-6" class="level2">
 <h2 class="anchored" data-anchor-id="example-usage-6">Example Usage</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a circles dataset</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>circles_data <span class="ot">&lt;-</span> <span class="fu">make_circles</span>()</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(circles_data<span class="sc">$</span>x, circles_data<span class="sc">$</span>y, <span class="at">col =</span> circles_data<span class="sc">$</span>label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a circles dataset</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>circles_data <span class="ot">&lt;-</span> <span class="fu">make_circles</span>(<span class="at">plot=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="introduction_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 </section>
 <section id="make_blobs" class="level1">
@@ -253,9 +352,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The <code>make_blobs</code> function generates isotropic Gaussian blobs for clustering.</p>
 <section id="example-usage-7" class="level2">
 <h2 class="anchored" data-anchor-id="example-usage-7">Example Usage</h2>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a blobs dataset</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>blobs_data <span class="ot">&lt;-</span> <span class="fu">make_blobs</span>()</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(blobs_data<span class="sc">$</span>x, blobs_data<span class="sc">$</span>y, <span class="at">col =</span> blobs_data<span class="sc">$</span>label)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a blobs dataset</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>blobs_data <span class="ot">&lt;-</span> <span class="fu">make_blobs</span>(<span class="at">plot =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="introduction_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
 </section>
 </section>
 <section id="conclusion" class="level1">

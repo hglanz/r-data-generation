@@ -1,6 +1,6 @@
 ---
 title: "Generating Various Synthetic Datasets"
-author: "Your Name"
+author: "Aditi Gajjar"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -44,7 +44,7 @@ The `make_anova` function generates synthetic data suitable for ANOVA (Analysis 
 
 ## Example Usage
 
-``` r
+```{r}
 library(syntheticDatasets)
 
 # Generate default ANOVA data
@@ -63,8 +63,7 @@ str(group_effect_anova_data)
 shuffled_anova_data <- make_anova(n_groups = 3, n_samples_per_group = 100, shuffle = TRUE)
 str(shuffled_anova_data)
 
-# Plot the data
-make_anova(n_groups = 3, n_samples_per_group = 100, n_features = 2, plot = TRUE)
+shuffled_anova_data$Y
 ```
 
 # 2. make_regression
@@ -88,7 +87,7 @@ The `make_regression` function generates a regression dataset suitable for testi
 
 ## Example Usage
 
-``` r
+```{r}
 # Generate a simple regression dataset and plot it
 simple_regression <- make_regression(plot = TRUE)
 
@@ -105,10 +104,9 @@ The `make_spiral` function generates a two-dimensional spiral dataset, which is 
 
 ## Example Usage
 
-``` r
+```{r}
 # Generate a spiral dataset
-spiral_data <- make_spiral()
-plot(spiral_data$x, spiral_data$y, col = spiral_data$label)
+spiral_data <- make_spiral(plot = T)
 ```
 
 # 4. make_moons
@@ -117,10 +115,9 @@ The `make_moons` function generates a two-dimensional dataset with two interleav
 
 ## Example Usage
 
-``` r
+```{r}
 # Generate a moons dataset
-moons_data <- make_moons()
-plot(moons_data$x, moons_data$y, col = moons_data$label)
+moons_data <- make_moons(plot=T)
 ```
 
 # 5. make_four_square
@@ -129,10 +126,8 @@ The `make_four_square` function generates a two-dimensional dataset with four cl
 
 ## Example Usage
 
-``` r
-# Generate a four square dataset
-four_square_data <- make_four_square()
-plot(four_square_data$x, four_square_data$y, col = four_square_data$label)
+```{r}
+four_square_data <- make_four_square(plot=T)
 ```
 
 # 6. make_classification
@@ -141,10 +136,9 @@ The `make_classification` function generates a random multi-class classification
 
 ## Example Usage
 
-``` r
+```{r}
 # Generate a classification dataset
-classification_data <- make_classification()
-plot(classification_data$x, classification_data$y, col = classification_data$label)
+classification_data <- make_classification(plot=T)
 ```
 
 # 7. make_circles
@@ -153,10 +147,9 @@ The `make_circles` function generates a large circle containing a smaller circle
 
 ## Example Usage
 
-``` r
+```{r}
 # Generate a circles dataset
-circles_data <- make_circles()
-plot(circles_data$x, circles_data$y, col = circles_data$label)
+circles_data <- make_circles(plot=T)
 ```
 
 # 8. make_blobs
@@ -165,10 +158,9 @@ The `make_blobs` function generates isotropic Gaussian blobs for clustering.
 
 ## Example Usage
 
-``` r
+```{r}
 # Generate a blobs dataset
-blobs_data <- make_blobs()
-plot(blobs_data$x, blobs_data$y, col = blobs_data$label)
+blobs_data <- make_blobs(plot = T)
 ```
 
 # Conclusion
