@@ -2,7 +2,10 @@
 title: "Generating Various Synthetic Datasets"
 author: "Aditi Gajjar"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+format: 
+  html:
+    toc: true
+    embed-resources: true
 vignette: >
   %\VignetteIndexEntry{Generating Various Synthetic Datasets}
   %\VignetteEngine{knitr::rmarkdown}
